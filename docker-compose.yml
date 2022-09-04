@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    container_name: casa-rules-dev
+    image: casa-rules-dev
+    volumes:
+      - ./casa-rules:/usr/src/casa-rules/casa-rules
+      - node_modules:/usr/src/casa-rules/casa-rules/node_modules
+    ports:
+      - 4200:4200
+      - 9005:9005
+      - 9876:9876
+    networks:
+      - casa-rules
+
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: prod
+    container_name: casa-rules
+    image: casa-rules
+    ports:
+      - 8080:8080
+    networks:
+      - casa-rules
+
+networks:
+  casa-rules:
+
+volumes:
+  node_modules:

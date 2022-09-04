@@ -1,0 +1,10 @@
+.dockerignore
+.git
+.github
+.gitignore
+Dockerfile
+docker-compose*.yml
+
+# System Files
+.DS_Store
+Thumbs.db
